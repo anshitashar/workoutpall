@@ -1,52 +1,50 @@
 package com.example.workoutpall
-import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.workoutpall.databinding.ActivitySignBinding
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 class SignActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySignBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var binding: SignActivity
-    private lateinit var signup: MaterialButton
-    private lateinit var register: MaterialButton
-    private lateinit var email: TextView
-    private lateinit var password: TextView
-    private lateinit var confirmpass:TextView
+    //private lateinit var signup: MaterialButton
+    //private lateinit var email: EditText
+    //private lateinit var password: EditText
+    //private lateinit var confirmpass: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_sign)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-            password = findViewById(R.id.password)
-            email = findViewById(R.id.email)
-            confirmpass = findViewById(R.id.conpassword)
-            signup = findViewById(R.id.register)
-            firebaseAuth = FirebaseAuth.getInstance()
-            val email = email.text.toString()
-            val pass = password.text.toString()
-            val confirmPass = confirmpass.text.toString()
-            signup.setOnClickListener {
-                if (pass == confirmPass) {
-                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                        if (it.isSuccessful) {
-                           Toast.makeText(this,"successfully",Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(this,"error", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+        firebaseAuth = FirebaseAuth.getInstance()
+        binding = ActivitySignBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        //email = findViewById(R.id.email)
+        //password = findViewById(R.id.password)
+        //confirmpass = findViewById(R.id.conpassword)
+        //signup = findViewById(R.id.register)
+        binding.register.setOnClickListener {
+            val emailText = binding.email.text.toString().trim()
+            val passwordText = binding.password.text.toString().trim()
+            val confirmPassText = binding.conpassword.text.toString().trim()
+
+            if (emailText.isEmpty() || passwordText.isEmpty() || confirmPassText.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (passwordText != confirmPassText) {
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
     }
 }
