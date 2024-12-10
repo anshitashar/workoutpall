@@ -9,20 +9,12 @@ import com.google.firebase.auth.FirebaseAuth
 class SignActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    //private lateinit var signup: MaterialButton
-    //private lateinit var email: EditText
-    //private lateinit var password: EditText
-    //private lateinit var confirmpass: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign)
         firebaseAuth = FirebaseAuth.getInstance()
         binding = ActivitySignBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //email = findViewById(R.id.email)
-        //password = findViewById(R.id.password)
-        //confirmpass = findViewById(R.id.conpassword)
-        //signup = findViewById(R.id.register)
         binding.register.setOnClickListener {
             val emailText = binding.email.text.toString().trim()
             val passwordText = binding.password.text.toString().trim()

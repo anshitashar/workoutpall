@@ -24,5 +24,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SignActivity::class.java)
             startActivity(intent)
         }
+        binding.logins.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
