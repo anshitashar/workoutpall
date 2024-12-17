@@ -13,4 +13,24 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="sign_up_page">SIGN UP PAGE</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="type_your_email">Type your Email</string>
+    <string name="retype_your_password">Retype your Password</string>
+    <string name="signup">SIGNUP</string>
+    <string name="already_registered_click_to_login">ALREADY REGISTERED, CLICK TO LOGIN</string>
+    <string name="name">Name</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="type_your_password">Type your password</string>
+    <string name="login">LOGIN</string>
+    <string name="not_register_click_to_make_a_new_acount">Not register , click to make a new acount</string>
+    <string name="login_page">LOGIN PAGE</string>
+    <string name="email">Email</string>
+    <string name="textview">TextView</string>
+    <string name="hello_name">Hello! Name</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="change_profile_photo">Change Profile Photo</string>
+    <string name="submit">SUBMIT</string>
+    <string name="profile">PROFILE</string>
 </resources>

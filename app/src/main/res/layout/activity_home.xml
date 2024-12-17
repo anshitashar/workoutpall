@@ -7,16 +7,4 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="Hello!"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="16dp" />
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-
 </androidx.constraintlayout.widget.ConstraintLayout>
