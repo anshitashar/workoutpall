@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface WorkOutDAO {
+public interface WorkOutDAO {
     @Query("SELECT * FROM workout ORDER BY id ASC")
     fun readAllData(): LiveData<List<workout>>
     @Insert
