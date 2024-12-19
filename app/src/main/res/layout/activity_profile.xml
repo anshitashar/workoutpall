@@ -17,9 +17,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_gravity="center"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="125dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="131dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -31,10 +31,11 @@
         android:gravity="center"
         android:text="NAME"
         android:textSize="20sp" />
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textSize="20sp"
+        android:text="TEXT VIEW"
         android:layout_marginTop="300dp"
         android:layout_marginStart="200dp"/>
     <TextView
@@ -46,11 +47,12 @@
         android:gravity="center"
         android:text="USERNAME"
         android:textSize="20sp" />
-    <EditText
+    <TextView
         android:id="@+id/userid"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textSize="20sp"
+        android:text="TEXT VIEW"
         android:layout_marginTop="350dp"
         android:layout_marginStart="200dp"/>
     <TextView
@@ -67,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:text="TEXT VIEW"
         android:layout_marginTop="400dp"
         android:layout_marginStart="200dp"/>
     <TextView
@@ -78,11 +81,12 @@
         android:gravity="center"
         android:text="HEIGHT"
         android:textSize="20sp" />
-    <EditText
+    <TextView
         android:id="@+id/heightid"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textSize="20sp"
+        android:text="TEXT VIEW"
         android:layout_marginTop="450dp"
         android:layout_marginStart="200dp"/>
     <TextView
@@ -94,10 +98,11 @@
         android:gravity="center"
         android:text="WEIGHT"
         android:textSize="20sp" />
-    <EditText
+    <TextView
         android:id="@+id/weightid"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:text="TEXT VIEW"
         android:textSize="20sp"
         android:layout_marginTop="500dp"
         android:layout_marginStart="200dp"/>

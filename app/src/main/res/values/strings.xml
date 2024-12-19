@@ -33,4 +33,5 @@
     <string name="change_profile_photo">Change Profile Photo</string>
     <string name="submit">SUBMIT</string>
     <string name="profile">PROFILE</string>
+    <string name="enter_the_password">Enter The Password</string>
 </resources>

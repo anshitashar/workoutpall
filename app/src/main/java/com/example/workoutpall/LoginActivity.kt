@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.workoutpall.databinding.ActivityLoginBinding
+import com.example.workoutpall.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import java.net.Authenticator
 class LoginActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        val intent = Intent(this, HomeActivity::class.java)
+                        val intent = Intent(this, HomeFragment::class.java)
                         startActivity(intent)
 
                     } else {
