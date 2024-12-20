@@ -1,13 +1,13 @@
 package com.example.workoutpall
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.workoutpall.databinding.ActivitySignBinding
 import com.example.workoutpall.ui.home.HomeActivity
-import com.google.android.material.button.MaterialButton
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.database.FirebaseDatabase
 
 class SignActivity : AppCompatActivity() {
@@ -26,10 +26,10 @@ class SignActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.register.setOnClickListener {
-            val emailText = binding.email.text.toString().trim()
+            var emailText = binding.email.text.toString().trim()
             val passwordText = binding.password.text.toString().trim()
             val confirmPassText = binding.conpassword.text.toString().trim()
-            val name = binding.name.text.toString().trim()
+            var name = binding.name.text.toString().trim()
             val height=binding.height.text.toString().trim()
             val weight=binding.weight.text.toString().trim()
             if (emailText.isEmpty() || passwordText.isEmpty() || confirmPassText.isEmpty() || name.isEmpty()|| height.isEmpty() || weight.isEmpty() ) {
@@ -44,14 +44,6 @@ class SignActivity : AppCompatActivity() {
 
             firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val user =firebaseAuth.currentUser
-                    user?.let {
-                        val userID = it.uid
-                        val userRef = database.getReference("users").child(userID)
-                        val userDetails = hashMapOf(
-                            "NAME" to name
-                        )
-                    }
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
                     val j = Intent(this, ProfileActivity::class.java)
                     j.putExtra("email",emailText )
@@ -69,3 +61,7 @@ class SignActivity : AppCompatActivity() {
         }
     }
 }
+
+
+
+
