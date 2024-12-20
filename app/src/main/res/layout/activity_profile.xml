@@ -24,23 +24,26 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginTop="300dp"
         android:gravity="center"
         android:text="NAME"
         android:textSize="20sp" />
+
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/nmaeid"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:textSize="20sp"
-        android:text="TEXT VIEW"
+        android:layout_marginStart="143dp"
         android:layout_marginTop="300dp"
-        android:layout_marginStart="200dp"/>
+        android:layout_toEndOf="@+id/name"
+        android:text="TEXT VIEW"
+        android:textSize="20sp" />
     <TextView
         android:id="@+id/username"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginTop="350dp"
@@ -57,7 +60,7 @@
         android:layout_marginStart="200dp"/>
     <TextView
         android:id="@+id/email"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginTop="400dp"
@@ -66,15 +69,14 @@
         android:textSize="20sp" />
     <TextView
         android:id="@+id/emailid"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:text="TEXT VIEW"
         android:layout_marginTop="400dp"
         android:layout_marginStart="200dp"/>
     <TextView
         android:id="@+id/height"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginTop="450dp"
@@ -91,7 +93,7 @@
         android:layout_marginStart="200dp"/>
     <TextView
         android:id="@+id/weight"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginTop="500dp"
@@ -108,11 +110,12 @@
         android:layout_marginStart="200dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="90dp"
         android:text="@string/submit"
         android:textSize="30sp" />
 
