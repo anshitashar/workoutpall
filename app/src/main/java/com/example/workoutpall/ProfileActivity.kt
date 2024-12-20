@@ -1,5 +1,6 @@
 package com.example.workoutpall
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.workoutpall.databinding.ActivityProfileBinding
 import com.example.workoutpall.databinding.ActivitySignBinding
+import com.example.workoutpall.ui.home.HomeActivity
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
@@ -24,6 +26,18 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var email=intent.getStringExtra("email")
+        var name =intent.getStringExtra("name")
+        var weight = intent.getStringExtra("weight")
+        var height = intent.getStringExtra("height")
+
         binding.emailid.text=email
+        binding.nmaeid.text=name
+        binding.weightid.text=weight
+        binding.heightid.text=height
+        binding.submit.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }

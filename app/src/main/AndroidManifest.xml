@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Workoutpall"
         tools:targetApi="31">
         <activity
-            android:name=".WorkOutHistry"
+            android:name=".DataSummary"
             android:exported="false" />
         <activity
-            android:name=".ui.home.WorkOutItem"
+            android:name=".WorkOutHistry"
             android:exported="false" />
         <activity
             android:name=".Navigation"
@@ -31,7 +31,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

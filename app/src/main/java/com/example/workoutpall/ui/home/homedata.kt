@@ -1,4 +1,3 @@
 package com.example.workoutpall.ui.home
 
-class homedata {
-}
+data class homedata(var heading : String)

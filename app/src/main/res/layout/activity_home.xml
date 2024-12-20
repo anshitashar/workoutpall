@@ -7,26 +7,6 @@
     tools:context=".ui.home.HomeActivity"
     android:id="@+id/main">
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="258dp"
-        android:background="?android:attr/listDivider" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="147dp"
-        android:background="?android:attr/listDivider" />
-
     <TextView
         android:id="@+id/tvWorkout"
         android:layout_width="match_parent"
@@ -44,10 +24,11 @@
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="match_parent"
+        android:clickable="true"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
         android:text="TextView"
         android:textColor="#6AA3F1"
         android:textSize="20sp"
@@ -93,7 +74,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="117dp"
+        android:layout_marginTop="187dp"
         android:text="Today's Summary"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -158,15 +139,5 @@
         android:text="Total Duration"
         android:textColor="@color/black"
         android:textStyle="italic" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="40dp"
-        android:background="?android:attr/listDivider" />
 
 </RelativeLayout>
