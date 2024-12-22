@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.workoutpall.databinding.ActivitySignBinding
-import com.example.workoutpall.ui.home.HomeActivity
+import com.example.workoutpall.home.HomeActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
