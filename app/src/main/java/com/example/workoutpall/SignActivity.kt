@@ -5,20 +5,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.workoutpall.databinding.ActivitySignBinding
 import com.example.workoutpall.home.HomeActivity
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    public lateinit var email:String
+    private lateinit var d:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign)
-        var database = FirebaseDatabase.getInstance()
+        FirebaseDatabase.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
+        FirebaseFirestore.getInstance()
         binding = ActivitySignBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.log.setOnClickListener {
@@ -36,12 +36,10 @@ class SignActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             if (passwordText != confirmPassText) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
@@ -50,10 +48,9 @@ class SignActivity : AppCompatActivity() {
                     j.putExtra("name",name )
                     j.putExtra("height",height )
                     j.putExtra("weight",weight )
-                    startActivity(j)
                     val i = Intent(this, HomeActivity::class.java)
                     i.putExtra("name",name )
-
+                    startActivity(j)
                 } else {
                     Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }

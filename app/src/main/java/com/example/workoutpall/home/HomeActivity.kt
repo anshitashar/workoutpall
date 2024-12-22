@@ -7,19 +7,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.workoutpall.DataSummary
+import com.example.workoutpall.MainActivity
 import com.example.workoutpall.ProfileActivity
 import com.example.workoutpall.R
 import com.example.workoutpall.databinding.ActivityHomeBinding
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-import kotlin.collections.*
-
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var binding: ActivityHomeBinding
-     lateinit var arrayList: ArrayList<homedata>
+    lateinit var arrayList: ArrayList<homedata>
     private lateinit var recycler: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,36 +31,34 @@ class HomeActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-       // var name = intent.getStringExtra("name")
-
-        val user = Firebase.auth.currentUser
-        user?.let {
-            // Name, email address, and profile photo Url
-            var name= it.displayName
-            val emailText = it.email
-            // Check if user's email is verified
-            val emailVerified = it.isEmailVerified
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
-            val uid = it.uid
-            binding.tvUserName.text="Hello!"+name
-        }
-
-        var heading = arrayOf("Cycling","Walking","Running","Cardio","stretching","Aerobics","Yoga","Squats")
+        //var heading = arrayOf("Cycling","Walking","Running","Cardio","stretching","Aerobics","Yoga","Squats")
         recycler=findViewById(R.id.rvWorkouts)
         arrayList = arrayListOf<homedata>()
 
         recycler.layoutManager=LinearLayoutManager(this)
-        for( index in arrayList.indices){
-            val workouts= homedata(heading[index])
-            arrayList.add(workouts)
-        }
-        recycler.adapter= HomeWorkAdapter(heading,this)
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
+        var myadapter =HomeWorkAdapter(arrayList,this)
+        recycler.adapter= myadapter
         binding.tvUserName.setOnClickListener{
             val j = Intent(this, ProfileActivity::class.java)
             startActivity(j)
         }
+        myadapter.setItemClickListener(object : HomeWorkAdapter.onItemClickListener {
+            override fun onItemClick(position: Int) {
+                val intent=Intent(this@HomeActivity,MainActivity::class.java)
+                startActivity(intent)
+            }
+
+
+        })
+
     }
 }
 
