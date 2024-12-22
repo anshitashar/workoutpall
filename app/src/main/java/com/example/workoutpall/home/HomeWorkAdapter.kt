@@ -1,4 +1,4 @@
-package com.example.workoutpall.ui.home
+package com.example.workoutpall.home
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ class HomeWorkAdapter(var arraylist: Array<String>, var context: Activity):
 
     RecyclerView.Adapter<HomeWorkAdapter.ViewHolder>()  {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeWorkAdapter.ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val intemView =LayoutInflater.from(parent.context).inflate(R.layout.items,parent,false)
         return ViewHolder(intemView)
     }

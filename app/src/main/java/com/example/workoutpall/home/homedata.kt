@@ -1,3 +1,3 @@
-package com.example.workoutpall.ui.home
+package com.example.workoutpall.home
 
 data class homedata(val heading : String )

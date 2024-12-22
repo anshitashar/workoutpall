@@ -30,7 +30,7 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".home.HomeActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"

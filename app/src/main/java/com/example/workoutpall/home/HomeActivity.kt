@@ -1,4 +1,4 @@
-package com.example.workoutpall.ui.home
+package com.example.workoutpall.home
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -58,13 +58,11 @@ class HomeActivity : AppCompatActivity() {
             val workouts= homedata(heading[index])
             arrayList.add(workouts)
         }
-        recycler.adapter=HomeWorkAdapter(heading,this)
+        recycler.adapter= HomeWorkAdapter(heading,this)
         binding.tvUserName.setOnClickListener{
             val j = Intent(this, ProfileActivity::class.java)
             startActivity(j)
         }
     }
-
-
 }
 

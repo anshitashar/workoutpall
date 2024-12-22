@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.workoutpall.databinding.ActivityProfileBinding
 import com.example.workoutpall.databinding.ActivitySignBinding
-import com.example.workoutpall.ui.home.HomeActivity
+import com.example.workoutpall.home.HomeActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.userProfileChangeRequest
