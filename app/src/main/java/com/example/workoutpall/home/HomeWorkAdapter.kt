@@ -32,12 +32,14 @@ class HomeWorkAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current=arraylist[position]
-       // holder.image.setImageResource(current.image)
+        holder.image.setImageResource(current.image)
         holder.heading.text=current.heading
     }
 
     class ViewHolder(view : View,Listener: onItemClickListener): RecyclerView.ViewHolder(view){
-       // val image:ImageView = view. findViewById(R.id.headingImage)
+        val image =view.findViewById<ImageView>(R.id.headingImage)
+
+        // val image:ImageView = view. findViewById(R.id.headingImage)
         val heading = view.findViewById<TextView>(R.id.textt)
         init{
             itemView.setOnClickListener{

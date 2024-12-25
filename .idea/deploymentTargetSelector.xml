@@ -15,10 +15,10 @@
       </SelectionState>
       <SelectionState runConfigName="workoutpall">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-24T14:10:03.179881200Z">
+        <DropdownSelection timestamp="2024-12-27T11:40:23.382960900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=91f5ed88" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\anshi\.android\avd\Pixel_8_Pro_API_32.avd" />
             </handle>
           </Target>
         </DropdownSelection>

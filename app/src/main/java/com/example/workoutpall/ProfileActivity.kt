@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.lint.Name
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.workoutpall.databinding.ActivityProfileBinding
@@ -24,12 +25,7 @@ class ProfileActivity : AppCompatActivity() {
         }
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var email=intent.getStringExtra("email")
-        var name =intent.getStringExtra("name")
-        var weight = intent.getStringExtra("weight")
-        var height = intent.getStringExtra("height")
-
-        binding.emailid.text=email
+        /**binding.emailid.text=User
         binding.nmaeid.text=name
         binding.weightid.text=weight
         binding.heightid.text=height
@@ -47,10 +43,10 @@ class ProfileActivity : AppCompatActivity() {
                     } else {
                         Log.e("ProfileUpdate", "Error updating profile", task.exception)
                     }
-                }
+                }**/
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
 
-}
+

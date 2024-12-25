@@ -6,30 +6,30 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.workoutpall.databinding.ActivitySignBinding
 import com.example.workoutpall.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SignActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var d:String
+    lateinit var database : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign)
-        FirebaseDatabase.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
-        FirebaseFirestore.getInstance()
         binding = ActivitySignBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.log.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         binding.register.setOnClickListener {
-            var emailText = binding.email.text.toString().trim()
+            val emailText = binding.email.text.toString().trim()
             val passwordText = binding.password.text.toString().trim()
             val confirmPassText = binding.conpassword.text.toString().trim()
-            var name = binding.name.text.toString().trim()
+            val name = binding.name.text.toString().trim()
             val height=binding.height.text.toString().trim()
             val weight=binding.weight.text.toString().trim()
             if (emailText.isEmpty() || passwordText.isEmpty() || confirmPassText.isEmpty() || name.isEmpty()|| height.isEmpty() || weight.isEmpty() ) {
@@ -42,15 +42,21 @@ class SignActivity : AppCompatActivity() {
             }
             firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    val userid = User(Name = name, email = emailText, weight = weight, Height = height)
+                    val user = firebaseAuth.currentUser
+                    val uid = user?.uid
+                    val db = FirebaseFirestore.getInstance()
+// Assuming you're storing user data in a collection called 'users' with document ID as the user's UID
+                    db.collection("users").document(uid.toString()).set(userid) // 'user' is an instance of the User data model
+                        .addOnSuccessListener { documentReference ->
+                           Toast.makeText(this,"added",Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "adding Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
-                    val j = Intent(this, ProfileActivity::class.java)
-                    j.putExtra("email",emailText )
-                    j.putExtra("name",name )
-                    j.putExtra("height",height )
-                    j.putExtra("weight",weight )
                     val i = Intent(this, HomeActivity::class.java)
-                    i.putExtra("name",name )
-                    startActivity(j)
+                    startActivity(i)
                 } else {
                     Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }

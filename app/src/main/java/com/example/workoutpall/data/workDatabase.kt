@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [workout::class], version = 1 , exportSchema =  false)
+@Database(entities = [workout::class], version = 2 , exportSchema =  false)
 abstract class workDatabase : RoomDatabase() {
     abstract fun WorkOutDAO(): WorkOutDAO
-   /**companion object{
+  companion object{
         @Volatile
         private var INSTANCE: workDatabase? = null
 
@@ -26,5 +26,5 @@ abstract class workDatabase : RoomDatabase() {
                 return instance
             }
         }
-    }**/
+    }
 }

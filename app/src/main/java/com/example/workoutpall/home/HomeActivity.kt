@@ -11,6 +11,7 @@ import com.example.workoutpall.DataSummary
 import com.example.workoutpall.MainActivity
 import com.example.workoutpall.ProfileActivity
 import com.example.workoutpall.R
+import com.example.workoutpall.Timer
 import com.example.workoutpall.databinding.ActivityHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -39,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
 
         recycler.layoutManager= LinearLayoutManager(this)
         for( index in heading.indices){
-            val workouts = homedata(heading=(heading[index]))
+            val workouts = homedata(image = R.drawable.cycle,heading=(heading[index]))
             arrayList.add(workouts)
         }
         binding.tvUserName.setOnClickListener{
@@ -50,7 +51,8 @@ class HomeActivity : AppCompatActivity() {
         recycler.adapter= myadapter
         myadapter.setItemClickListener(object : HomeWorkAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
-                val intent= Intent(this@HomeActivity,DataSummary::class.java)
+                val intent= Intent(this@HomeActivity,Timer::class.java)
+                intent.putExtra("heading", arrayList[position].heading)
                 startActivity(intent)
             }
 

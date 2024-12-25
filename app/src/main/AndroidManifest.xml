@@ -15,10 +15,16 @@
         android:theme="@style/Theme.Workoutpall"
         tools:targetApi="31">
         <activity
+            android:name=".data.DataItem"
+            android:exported="false" />
+        <activity
+            android:name=".Timer"
+            android:exported="false" />
+        <activity
             android:name=".DataSummary"
             android:exported="false" />
         <activity
-            android:name=".WorkOutHistry"
+            android:name=".data.WorkOutHistry"
             android:exported="false" />
         <activity
             android:name=".Achivement"

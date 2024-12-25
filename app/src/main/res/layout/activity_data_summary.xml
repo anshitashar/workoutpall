@@ -24,8 +24,8 @@
         android:layout_marginTop="66dp"
         android:backgroundTint="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/tvWorkout_summary"
+    <EditText
+        android:id="@+id/tvWorkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ivPerson"
@@ -45,7 +45,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginTop="50dp" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvWorkoutTimeSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvCaloriesDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_toEndOf="@+id/ivBurn"
-        android:text="Calories Burned"
+        android:text="Calories"
         android:textColor="@color/black"
         android:textSize="18sp" />
 
