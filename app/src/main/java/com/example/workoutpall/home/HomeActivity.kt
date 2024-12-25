@@ -32,27 +32,25 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //var heading = arrayOf("Cycling","Walking","Running","Cardio","stretching","Aerobics","Yoga","Squats")
+        var heading = arrayOf("Cycling","Walking","Running","Cardio","stretching","Aerobics")
         recycler=findViewById(R.id.rvWorkouts)
         arrayList = arrayListOf<homedata>()
 
-        recycler.layoutManager=LinearLayoutManager(this)
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        var myadapter =HomeWorkAdapter(arrayList,this,)
-        recycler.adapter= myadapter
+
+        recycler.layoutManager= LinearLayoutManager(this)
+        for( index in heading.indices){
+            val workouts = homedata(heading=(heading[index]))
+            arrayList.add(workouts)
+        }
         binding.tvUserName.setOnClickListener{
             val j = Intent(this, ProfileActivity::class.java)
             startActivity(j)
         }
+        var myadapter =HomeWorkAdapter(arrayList,this,)
+        recycler.adapter= myadapter
         myadapter.setItemClickListener(object : HomeWorkAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
-                val intent=Intent(this@HomeActivity,MainActivity::class.java)
+                val intent= Intent(this@HomeActivity,DataSummary::class.java)
                 startActivity(intent)
             }
 

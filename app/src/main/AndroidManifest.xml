@@ -21,11 +21,6 @@
             android:name=".WorkOutHistry"
             android:exported="false" />
         <activity
-            android:name=".Navigation"
-            android:exported="false"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/Theme.Workoutpall.NoActionBar" />
-        <activity
             android:name=".Achivement"
             android:exported="false" />
         <activity
