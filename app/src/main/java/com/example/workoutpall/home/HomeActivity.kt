@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
         arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
         arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
         arrayList.add(homedata(image = R.drawable.ic_menu_camera,"Cycling"))
-        var myadapter =HomeWorkAdapter(arrayList,this)
+        var myadapter =HomeWorkAdapter(arrayList,this,)
         recycler.adapter= myadapter
         binding.tvUserName.setOnClickListener{
             val j = Intent(this, ProfileActivity::class.java)

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.workoutpall.R
 class HomeWorkAdapter(
     private var arraylist: ArrayList<homedata>,
-    var context: Activity, ): RecyclerView.Adapter<HomeWorkAdapter.ViewHolder>()  {
+    var context: Activity ): RecyclerView.Adapter<HomeWorkAdapter.ViewHolder>()  {
 
         private lateinit var myListener: onItemClickListener
         interface onItemClickListener{
