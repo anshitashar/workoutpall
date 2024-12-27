@@ -1,6 +1,7 @@
 package com.example.workoutpall
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.workoutpall.databinding.ActivitySignBinding
@@ -44,16 +45,15 @@ class SignActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val userid = User(Name = name, email = emailText, weight = weight, Height = height)
                     val user = firebaseAuth.currentUser
-                    val uid = user?.uid
+                    val uid = user!!.uid
                     val db = FirebaseFirestore.getInstance()
-// Assuming you're storing user data in a collection called 'users' with document ID as the user's UID
-                    db.collection("users").document(uid.toString()).set(userid) // 'user' is an instance of the User data model
-                        .addOnSuccessListener { documentReference ->
-                           Toast.makeText(this,"added",Toast.LENGTH_SHORT).show()
+                    db.collection("users").document(uid).set(userid).addOnCompleteListener{ documentReference->
+                        Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
+                    }
+                        .addOnFailureListener {e->
+                            Log.e("Error Adding" ,e.message,e)
                         }
-                        .addOnFailureListener {
-                            Toast.makeText(this, "adding Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                        }
+
                     Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
                     val i = Intent(this, HomeActivity::class.java)
                     startActivity(i)
@@ -64,6 +64,10 @@ class SignActivity : AppCompatActivity() {
         }
     }
 }
+
+
+
+
 
 
 

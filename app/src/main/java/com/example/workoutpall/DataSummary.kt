@@ -27,9 +27,7 @@ class DataSummary : AppCompatActivity() {
             val workouttype=binding.tvWorkout.text.toString()
             val calories=binding.tvCaloriesDisplay.text.toString().toDouble()
             val user = workout(0, image = R.drawable.cycle,workouttype,calories)
-            //deleteDatabase( "WorkOut")
-
-            viewModel.insert(user)
+            deleteDatabase( "WorkOut")
 
             val intent = Intent(this,WorkOutHistry::class.java)
             startActivity(intent)
