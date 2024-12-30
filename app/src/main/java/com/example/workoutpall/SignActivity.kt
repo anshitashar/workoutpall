@@ -8,7 +8,6 @@ import com.example.workoutpall.databinding.ActivitySignBinding
 import com.example.workoutpall.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SignActivity : AppCompatActivity() {

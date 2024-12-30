@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home.HomeActivity"
     android:id="@+id/main">
-
 
     <TextView
         android:id="@+id/tvWorkout"
@@ -27,8 +27,9 @@
         android:layout_width="398dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="25dp"
         android:clickable="true"
         android:text="TextView"
         android:textColor="#6AA3F1"
@@ -50,6 +51,7 @@
 
     <ImageView
         android:id="@+id/ivCalories"
+        android:src="@drawable/images"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_below="@+id/textView7"
@@ -57,25 +59,14 @@
         android:layout_marginTop="23dp"
         android:layout_toEndOf="@+id/tvActivity" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWorkouts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvWorkout"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="15dp"
-        android:foregroundTint="#FFFFFF" />
-
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="139dp"
         android:text="Today's Summary"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -140,5 +131,59 @@
         android:text="Total Duration"
         android:textColor="@color/black"
         android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvWorkout"
+        android:layout_marginTop="19dp"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWorkouts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvWorkout"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="100dp"
+            android:foregroundTint="#FFFFFF" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Achivement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="ACHIVEMENT"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="155dp"
+        android:text="HISTRY"
+        android:textSize="15dp"
+        />
+    <Button
+        android:id="@+id/histry"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="250dp"
+        android:text="HISTRY"
+        android:textSize="15dp" />
+
 
 </RelativeLayout>

@@ -6,9 +6,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import com.example.workoutpall.data.workout
+import com.example.workoutpall.data.workviewModel
 import com.example.workoutpall.databinding.ActivityLoginBinding
 import com.example.workoutpall.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -38,6 +42,23 @@ class LoginActivity : AppCompatActivity() {
 
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        var viewModel: workviewModel
+                        var firebaseAuth:FirebaseAuth
+                        firebaseAuth = FirebaseAuth.getInstance()
+                        val user = firebaseAuth.currentUser
+                        val uid = user!!.uid
+                        val db = FirebaseFirestore.getInstance()
+                        db.collection("work$uid").get().addOnSuccessListener {querySnapshot->
+                        for(document in querySnapshot.documents) {
+                            val name = document.getString("workOutName").toString()
+                            val Calories = document.getDouble("calories")
+                            val time = document.getDouble("time")
+                            var date=document.getString("date")
+                            val user = workout(0, image = R.drawable.cycle, name,date!!,time!!, Calories!!.toDouble())
+                            viewModel = ViewModelProvider(this).get(workviewModel::class.java)
+                            viewModel.insert(user)
+                        }
+                        }
                         val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
 

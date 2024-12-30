@@ -1,6 +1,4 @@
 package com.example.workoutpall
-
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -11,15 +9,15 @@ import android.widget.Button
 import android.widget.Chronometer
 import android.widget.ImageView
 import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.workoutpall.databinding.ActivityTimerBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 
 class Timer:AppCompatActivity() {
-
+    private lateinit var binding: ActivityTimerBinding
     private val TAG = "workout_timer"
     private lateinit var chronometer: Chronometer
     private var running = false
@@ -29,25 +27,28 @@ class Timer:AppCompatActivity() {
     private lateinit var finishWorkoutButton: Button
     private var pauseOffset: Long = 0
     private var currentTime: Int = 0  // will be used to store the current time on the chronometer
-    private lateinit var workouts: List<String>
     private lateinit var workoutTitle: ImageView
     private lateinit var startTime: Date  // stores the date, and time of the started workout
     private lateinit var finishTime: Date  // stores the date and time of the finished workout
     private lateinit var progressBar: ProgressBar
 
-    @SuppressLint("MissingInflatedId")
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding=ActivityTimerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setContentView(R.layout.activity_timer)
+
+        val heading =intent.getStringExtra("heading")
+        Toast.makeText(this, "$heading", Toast.LENGTH_SHORT).show()
         val dtf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
 
         chronometer = findViewById(R.id.timer)
         startStopButton = findViewById(R.id.btnStart_stop)
         resetButton = findViewById(R.id.btnReset)
         finishWorkoutButton = findViewById(R.id.btnFinish)
-        workoutTitle = findViewById(R.id.tvWorkoutList)
         progressBar = findViewById(R.id.circleProgress)
+        binding.tvWorkout.text="A"
 
         startStopButton.setOnClickListener {
             startStopTimer(it, dtf)
@@ -72,7 +73,6 @@ class Timer:AppCompatActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun startStopTimer(view: View, dtf: SimpleDateFormat) {
         when {
             !running && !started -> {   // If workout has just started
@@ -110,6 +110,7 @@ class Timer:AppCompatActivity() {
         //Toast.makeText(this, "Finished", Toast.LENGTH_SHORT).show()
     }
 
+
     private fun finishWorkout(view: View) {
         var seconds = if (!running) {
             currentTime
@@ -125,13 +126,12 @@ class Timer:AppCompatActivity() {
 
         finishTime = Date()
         Log.i(TAG, finishTime.toString())
-
+        val heading =intent.getStringExtra("heading")
         val i = Intent(this, DataSummary::class.java)
-        /**i.putExtra("Workout2", workouts as Serializable)
-        i.putExtra("startTime", startTime as Serializable)
-        i.putExtra("finishTime", finishTime as Serializable)**/
         i.putExtra("finalTime", seconds)
+        i.putExtra("heading",heading)
         startActivity(i)
+
     }
 
 

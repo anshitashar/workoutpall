@@ -24,13 +24,15 @@ class myadapter(
         val current=arrayList[position]
         holder.itemView.id=current.id
         holder.workoutname.text=current.WorkOutName
+        holder.timer.text=current.Timestamp.toString()
         holder.Calories.text=current.Calories.toString()
+        holder.date.text=current.date.toString()
 
     }
     class ViewHolder(view : View): RecyclerView.ViewHolder(view){
-        //val timer=view.findViewById<TextView>(R.id.timer)
+        val timer=view.findViewById<TextView>(R.id.Timer)
         val Calories=view.findViewById<TextView>(R.id.Calories)
-        //val time=view.findViewById<TextView>(R.id.Date)
+        val date=view.findViewById<TextView>(R.id.Date)
         val workoutname =view.findViewById<TextView>(R.id.Workoutid)
     }
     fun setdata(user: List<workout>){

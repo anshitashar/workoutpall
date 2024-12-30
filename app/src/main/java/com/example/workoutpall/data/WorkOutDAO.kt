@@ -7,10 +7,10 @@ import androidx.room.Query
 
 @Dao
  interface WorkOutDAO {
-    @Query("SELECT * FROM workout ORDER BY id ASC")
+    @Query("SELECT * FROM workout  ")
     fun readAllData(): LiveData<List<workout>>
     @Insert
     fun addData(workout: workout)
-    @Delete
-    fun delete(workout: workout)
+   @Query("DELETE FROM WorkOut")
+   suspend fun deleteAllWorkouts()
 }
