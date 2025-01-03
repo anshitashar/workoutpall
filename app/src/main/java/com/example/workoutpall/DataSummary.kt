@@ -54,10 +54,22 @@ class DataSummary : AppCompatActivity() {
             val heading=binding.tvWorkout.text.toString()
 
             if (heading=="Cycling"){
-                val cal=((finalTime*9* weight!!)/3600).toDouble()
+                val cal=((finalTime*7.5* weight!!)/3600).toInt()
                 binding.tvCaloriesDisplay.text= cal.toString()
-            }else if (heading=="walking"){
-                val cal=((finalTime*8* weight!!)/3600).toDouble()
+            }else if (heading=="Walking"){
+                val cal=((finalTime*3.5* weight!!)/3600).toInt()
+                binding.tvCaloriesDisplay.text= cal.toString()
+            }else if (heading=="Running"){
+                val cal=((finalTime*8.1* weight!!)/3600).toInt()
+                binding.tvCaloriesDisplay.text= cal.toString()
+            }else if (heading=="Skipping"){
+                val cal=((finalTime*10* weight!!)/3600).toInt()
+                binding.tvCaloriesDisplay.text= cal.toString()
+            }else if (heading=="Yoga"){
+                val cal=((finalTime*3* weight!!)/3600).toInt()
+                binding.tvCaloriesDisplay.text= cal.toString()
+            }else if (heading=="Stretching"){
+                val cal=((finalTime*3* weight!!)/3600).toInt()
                 binding.tvCaloriesDisplay.text= cal.toString()
             }
 
@@ -84,17 +96,6 @@ class DataSummary : AppCompatActivity() {
             viewModel.insert(user)
 
         }
-        /**db.collection("work$uid").get().addOnSuccessListener {querySnapshot->
-           for(document in querySnapshot.documents){
-               val time = document.getDouble("timestamp")
-               val name=document.getString("workOutName").toString()
-               val Calories =document.getDouble("calories")
-               val user = workout(0, image = R.drawable.cycle,name,sdf.format(Date()),time!!,Calories!!.toDouble())
-               viewModel.insert(user)
-
-
-           }
-       }**/
 
     }
 

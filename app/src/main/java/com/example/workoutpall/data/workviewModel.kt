@@ -11,31 +11,25 @@ import kotlinx.coroutines.launch
 
 // Creating a flow of data
 class workviewModel(application: Application) : AndroidViewModel(application) {
-    private val workoutRepository: workRepository
+    //private val workoutRepository: workRepository
+    val read :LiveData<List<MonthlyCalories>>
     val readAllData:LiveData<List<workout>>
     val MIGRATION_1_2 = object : Migration(1, 2) {
         override fun migrate(database: SupportSQLiteDatabase) {
-            // Drop the WorkOut table in the migration path
         }
     }
-
-
-    // Create a Room database instance
-    private val db = Room.databaseBuilder(application, workDatabase::class.java, "workout_database").fallbackToDestructiveMigration().build()
+    private val db = Room.databaseBuilder(application, workDatabase::class.java, "workout_database").addMigrations(MIGRATION_1_2).build()
     private val workoutDao = db.WorkOutDAO()
 
-    init {
-        // Initialize the repository
-        workoutRepository = workRepository(workoutDao)
+   init {
+        read = workoutDao.read()
+        readAllData= workoutDao.readAllData()
 
-        // Get the list of all workouts and observe it in the UI
-         readAllData= workoutRepository.readAllData
-    }
+   }
 
-    // Function to insert a workout
     fun insert(workout: workout) {
         viewModelScope.launch(Dispatchers.IO) {
-            workoutRepository.addworkout(workout)
+            workoutDao.addData(workout)
         }
     }
     fun clearAllData() {
@@ -43,6 +37,14 @@ class workviewModel(application: Application) : AndroidViewModel(application) {
             workoutDao.deleteAllWorkouts()
         }
     }
+    fun getMonthlyCalories() {
+        viewModelScope.launch(Dispatchers.IO) {
+            workoutDao.read()
+        }
+    }
+
 }
+
+
 
 

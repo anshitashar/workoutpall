@@ -3,12 +3,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.workoutpall.DataSummary
-import com.example.workoutpall.MainActivity
+import com.example.workoutpall.Achivement
 import com.example.workoutpall.ProfileActivity
 import com.example.workoutpall.R
 import com.example.workoutpall.Timer
@@ -19,7 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import java.util.logging.Logger.global
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -31,31 +27,31 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
         firebaseAuth = FirebaseAuth.getInstance()
         firestore=FirebaseFirestore.getInstance()
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //var heading = arrayOf("Cycling","Walking","Running","Cardio","stretching","Aerobics","Yoga","Squats")
-        var heading = arrayOf("Cycling","Walking","Running","Cardio","stretching","Aerobics")
+        val user=firebaseAuth.currentUser
+        val uid= user?.uid
+        val userinfo =firestore.collection("users").document(uid!!).get()
+        userinfo.addOnSuccessListener { document->
+            binding.tvUserName.text="Hiii!"+document.getString("name")
+        }
+        val heading = arrayOf("Cycling","Walking","Running","Skipping","Stretching","Aerobics","Yoga","Squats")
+        val image = arrayOf(R.drawable.cycle,R.drawable.walking,R.drawable.running,R.drawable.skipping,R.drawable.walking,R.drawable.running,R.drawable.yoga,R.drawable.running)
         recycler=findViewById(R.id.rvWorkouts)
         arrayList = arrayListOf<homedata>()
 
-
-        recycler.layoutManager= LinearLayoutManager(this)
+        recycler.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         for( index in heading.indices){
-            val workouts = homedata(image = R.drawable.cycle,heading=(heading[index]))
+            val workouts = homedata(image = image[index],heading=(heading[index]))
             arrayList.add(workouts)
         }
         binding.tvUserName.setOnClickListener{
             val j = Intent(this, ProfileActivity::class.java)
             startActivity(j)
         }
-        var myadapter =HomeWorkAdapter(arrayList,this,)
+        val myadapter =HomeWorkAdapter(arrayList,this,)
         recycler.adapter= myadapter
         myadapter.setItemClickListener(object : HomeWorkAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
@@ -63,20 +59,18 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("heading", arrayList[position].heading)
                 startActivity(intent)
             }
-
-
         })
         binding.histry.setOnClickListener{
             val intent= Intent(this@HomeActivity,WorkOutHistry::class.java)
             startActivity(intent)
-
+        }
+        binding.Achivement.setOnClickListener{
+            val intent= Intent(this@HomeActivity,Achivement::class.java)
+            startActivity(intent)
         }
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val currentDate = sdf.format(Date())
         binding.tvDate.text=currentDate
-
-        val user=firebaseAuth.currentUser
-        val uid= user?.uid
         var cal=0.0
         var time=0.0
         firestore.collection("work$uid").get().addOnSuccessListener {
@@ -88,13 +82,9 @@ class HomeActivity : AppCompatActivity() {
                 time += t!!
             }
         }
-            binding.tvCalories.text= cal.toString()
-            binding.tvActivity.text=time.toString()
+            binding.tvCalories.text= cal.toLong().toString()
+            binding.tvActivity.text=(time/60).toLong().toString()+"min"
         }
-
-
-
-
     }
 }
 

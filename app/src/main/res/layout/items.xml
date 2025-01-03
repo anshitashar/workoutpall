@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="5dp"
@@ -13,25 +13,23 @@
         android:id="@+id/items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="140dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:id="@+id/headingImage"
-            android:layout_margin="10dp">
-
-        </com.google.android.material.imageview.ShapeableImageView>
+            android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/textt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textt"
-            android:textStyle="bold"
-            android:textSize="16dp"
-            android:text="Joe Biden appoints two prominent Indian-American corporate leaders to his Export Council"
-            android:layout_gravity="center">
+            android:layout_gravity="left"
+            android:text=""
+            android:textSize="30dp"
+            android:textStyle="bold">
 
         </TextView>
 

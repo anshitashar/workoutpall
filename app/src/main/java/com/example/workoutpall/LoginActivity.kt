@@ -43,20 +43,19 @@ class LoginActivity : AppCompatActivity() {
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
                         var viewModel: workviewModel
-                        var firebaseAuth:FirebaseAuth
-                        firebaseAuth = FirebaseAuth.getInstance()
+                        val firebaseAuth:FirebaseAuth = FirebaseAuth.getInstance()
                         val user = firebaseAuth.currentUser
                         val uid = user!!.uid
                         val db = FirebaseFirestore.getInstance()
                         db.collection("work$uid").get().addOnSuccessListener {querySnapshot->
                         for(document in querySnapshot.documents) {
                             val name = document.getString("workOutName").toString()
-                            val Calories = document.getDouble("calories")
-                            val time = document.getDouble("time")
-                            var date=document.getString("date")
-                            val user = workout(0, image = R.drawable.cycle, name,date!!,time!!, Calories!!.toDouble())
+                            val calories = document.getDouble("calories")
+                            val time = document.getDouble("timestamp")
+                            val date=document.getString("date")
+                            val work = workout(0, image = R.drawable.cycle, name,date.toString(),time!!, calories!!.toDouble())
                             viewModel = ViewModelProvider(this).get(workviewModel::class.java)
-                            viewModel.insert(user)
+                            viewModel.insert(work)
                         }
                         }
                         val intent = Intent(this, HomeActivity::class.java)

@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
     tools:context=".Achivement">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_marginTop="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F8F2F2"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="50dp">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/TEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#605F61"
+            android:text="January"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/monthcal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textSize="38dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="Cal"/>
+        </LinearLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly Calories"/>
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/daily"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter Daily goal for calories"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/monthly"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:hint="Enter monthly goal for calories"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:backgroundTint="#8E24AA"
+        android:text="Set Goal" />
+</LinearLayout>

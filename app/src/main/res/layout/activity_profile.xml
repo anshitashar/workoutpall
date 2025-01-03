@@ -1,130 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity"
-    android:orientation="vertical">
+    tools:context=".ProfileActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="129dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:gravity="center"
+        android:text="EDIT PROFILE"
+        android:textColor="#700681"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="300dp"
-        android:gravity="center"
-        android:text="NAME"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/nmaeid"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="300dp"
-        android:layout_toEndOf="@+id/name"
-        android:text="TEXT VIEW"
-        android:textSize="20sp" />
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="350dp"
-        android:gravity="center"
-        android:text="USERNAME"
-        android:textSize="20sp" />
-    <TextView
-        android:id="@+id/userid"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:textSize="20sp"
-        android:text="TEXT VIEW"
-        android:layout_marginTop="350dp"
-        android:layout_marginStart="200dp"/>
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="400dp"
-        android:gravity="center"
-        android:text="EMAIL"
-        android:textSize="20sp" />
-    <TextView
-        android:id="@+id/emailid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TEXT VIEW"
-        android:layout_marginTop="400dp"
-        android:layout_marginStart="200dp"/>
-    <TextView
-        android:id="@+id/height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="450dp"
-        android:gravity="center"
-        android:text="HEIGHT"
-        android:textSize="20sp" />
-    <TextView
-        android:id="@+id/heightid"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:textSize="20sp"
-        android:text="TEXT VIEW"
-        android:layout_marginTop="450dp"
-        android:layout_marginStart="200dp"/>
-    <TextView
-        android:id="@+id/weight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="500dp"
-        android:gravity="center"
-        android:text="WEIGHT"
-        android:textSize="20sp" />
-    <TextView
-        android:id="@+id/weightid"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="TEXT VIEW"
-        android:textSize="20sp"
-        android:layout_marginTop="500dp"
-        android:layout_marginStart="200dp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/submit"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="90dp"
-        android:text="@string/submit"
-        android:textSize="30sp" />
+        android:layout_marginHorizontal="16dp"
+        android:elevation="20dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/SignOut"
+        <EditText
+            android:id="@+id/nmaeid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="143dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/name"
+            android:text="TEXT VIEW"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="EMAIL"
+                android:textColor="#494646"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/emailid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="10dp"
+                android:text="TEXT VIEW"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="143dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="HEIGHT"
+                android:textColor="#494646"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/heightid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="10dp"
+                android:text="TEXT VIEW"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="235dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="WEIGHT"
+                android:textColor="#494646"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/weightid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="10dp"
+                android:text="TEXT VIEW"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="335dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#700681"
+            android:text="@string/submit"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/SignOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="335dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#700681"
+            android:text="SignOut"
+            android:textColor="@color/white" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:text="SignOut" />
+        android:layout_marginTop="36dp"
+        android:text="Close"
+        android:textColor="@color/white"
+        android:backgroundTint="#700681"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.093" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

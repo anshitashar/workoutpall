@@ -1,7 +1,6 @@
 package com.example.workoutpall.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.type.Date
 
 @Entity(tableName = "WorkOut")
 data class workout(

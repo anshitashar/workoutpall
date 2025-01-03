@@ -1,16 +1,14 @@
 package com.example.workoutpall
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Chronometer
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.workoutpall.databinding.ActivityTimerBinding
 import java.text.SimpleDateFormat
@@ -27,7 +25,6 @@ class Timer:AppCompatActivity() {
     private lateinit var finishWorkoutButton: Button
     private var pauseOffset: Long = 0
     private var currentTime: Int = 0  // will be used to store the current time on the chronometer
-    private lateinit var workoutTitle: ImageView
     private lateinit var startTime: Date  // stores the date, and time of the started workout
     private lateinit var finishTime: Date  // stores the date and time of the finished workout
     private lateinit var progressBar: ProgressBar
@@ -73,6 +70,7 @@ class Timer:AppCompatActivity() {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForColorStateLists")
     private fun startStopTimer(view: View, dtf: SimpleDateFormat) {
         when {
             !running && !started -> {   // If workout has just started

@@ -26,7 +26,7 @@ class myadapter(
         holder.workoutname.text=current.WorkOutName
         holder.timer.text=current.Timestamp.toString()
         holder.Calories.text=current.Calories.toString()
-        holder.date.text=current.date.toString()
+        holder.date.text=current.date
 
     }
     class ViewHolder(view : View): RecyclerView.ViewHolder(view){

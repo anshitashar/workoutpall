@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "564448359133",
+    "firebase_url": "https://workoutpalll-default-rtdb.firebaseio.com",
+    "project_id": "workoutpalll",
+    "storage_bucket": "workoutpalll.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564448359133:android:d780fe30d643643c93a134",
+        "android_client_info": {
+          "package_name": "com.example.workoutpall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY8gYEvwpe_MjWAn5lJpt6SwB_ybSvf3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

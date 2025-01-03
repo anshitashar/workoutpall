@@ -23,6 +23,7 @@ android {
         viewBinding=true
     }
 
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -58,18 +59,23 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.database)
     implementation(libs.androidx.animation.core.lint)
+    implementation(libs.play.services.fitness)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    // Navigation Component
-    implementation("androidx.room:room-runtime:2.6.1")  // Room runtime (updated version)
-    kapt("androidx.room:room-compiler:2.6.1")  // Room annotation processor (updated version)
-    implementation("androidx.room:room-ktx:2.6.1")  // Room KTX for Kotlin extensions (updated version)
-    androidTestImplementation("androidx.room:room-testing:2.6.1")  // Room testing for Android tests (updated version)
+    implementation(libs.androidx.room.runtime)  // Room runtime (updated version)
+    kapt(libs.androidx.room.compiler)  // Room annotation processor (updated version)
+    implementation(libs.androidx.room.ktx)  // Room KTX for Kotlin extensions (updated version)
+    androidTestImplementation(libs.androidx.room.testing)  // Room testing for Android tests (updated version)
+    implementation(libs.kotlin.stdlib.jdk7)
+    implementation(libs.kotlinx.coroutines.android)
+    api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.android.v135)
+    implementation (libs.androidx.core)
+    //implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    //implementation ("com.jjoe64:graphview:4.2.2")
+    implementation("com.androidplot:androidplot-core:1.2.1")
+    implementation (libs.retrofit)
 
-    // Kotlin standard library and coroutines (optional, depending on your app's needs)
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5")
+
 }

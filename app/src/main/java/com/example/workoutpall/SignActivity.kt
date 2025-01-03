@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.workoutpall.data.goalset
 import com.example.workoutpall.databinding.ActivitySignBinding
 import com.example.workoutpall.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -46,6 +47,8 @@ class SignActivity : AppCompatActivity() {
                     val user = firebaseAuth.currentUser
                     val uid = user!!.uid
                     val db = FirebaseFirestore.getInstance()
+                    val list=goalset(0.0,0.0)
+                    db.collection("goal").document(uid).set(list)
                     db.collection("users").document(uid).set(userid).addOnCompleteListener{ documentReference->
                         Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
                     }

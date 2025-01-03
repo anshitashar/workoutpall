@@ -5,6 +5,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [workout::class], version = 2 , exportSchema =  false)
+
+
 abstract class workDatabase : RoomDatabase() {
     abstract fun WorkOutDAO(): WorkOutDAO
   companion object{
